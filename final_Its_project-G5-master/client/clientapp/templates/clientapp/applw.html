@@ -1,0 +1,96 @@
+
+<html>
+  <head>
+    <title>Wells</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 20,
+          center: new google.maps.LatLng(18.420431, 84.016092),
+          mapTypeId: 'satellite'
+        });
+
+        
+        var icons = {
+          info: {
+            icon: 'http://www.iconshock.com/img_vista/SUPERVISTA/3d_graphics/jpg/cylinder_icon.jpg'
+          }
+        };
+	var locations=[];
+   
+    {% for item in data %}
+	var W1 = {{ item.Lat }};
+        var W2 = {{ item.Long }};
+        var D={{ item.Depth }};
+	var A={{ item.Avg_water }};
+	var pi="{{ item.Well_pic }}";
+	locations.push([W1,W2,D,A,pi]);
+    {% endfor %}
+var i=0;
+	var features=[];
+	for (i = 0; i < locations.length; i++) 
+	{
+		features.push({	
+           position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+            type: 'info'
+          });
+
+
+	}  
+        
+	
+	
+
+        // Create markers.
+	var i=-1;
+        features.forEach(function(feature) {
+		i=i+1;
+		var icon = {
+    url: 'http://www.iconshock.com/img_vista/SUPERVISTA/3d_graphics/jpg/cylinder_icon.jpg',
+    scaledSize: new google.maps.Size(locations[i][2]/3,locations[i][2])
+		}
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icon,
+            map: map
+          });
+	
+	google.maps.event.addListener(marker, 'click', (function(marker, feature) {
+        return function() {
+		var infowindow = new google.maps.InfoWindow();
+          infowindow.setContent("Depth : "+locations[i][2]+"<br>"+"Avg yield : "+locations[i][3]);
+          infowindow.open(map, marker);
+	delete infowindow;
+
+        }
+      })(marker, feature));
+
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA6DBq5hcAeUdPjXiUIiUIKOfqbdUxaQ8
+&callback=initMap">
+    </script>
+  </body>
+</html>
+

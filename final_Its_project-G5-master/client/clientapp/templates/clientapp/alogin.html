@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<title>Login</title>
+<meta charset="utf-8">
+{% load static %}
+<link rel="stylesheet" href="{% static '/clientapp/css/style.css' %}">
+<link rel="stylesheet" href="{% static '/clientapp/css/grid.css' %}">
+<link rel="stylesheet" href="{% static '/clientapp/css/forms.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<script src="{%static '/clientapp/js/jquery-1.7.1.min.js' %}"></script>
+<script src="{% static 'clientapp/js/superfish.js' %}"></script>
+<script src="{% static 'clientapp/js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static '/clientapp/js/tms-0.4.1.js' %}"></script>
+<script src="{% static '/clientapp/js/slider.js' %}"></script>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<link rel="stylesheet" href="css/ie.css"> 
+<![endif]-->
+<style>
+    div.container {
+      display:inline-block;
+    }
+
+    p {
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+<div class="main-bg">
+  <!-- Header -->
+  <header>
+    <div class="inner">
+      <h1 class="logo"><a href="index.html">AgroPlus - Agriculture company</a></h1>
+      <nav>
+        <ul class="sf-menu">
+          <li><a href="http://127.0.0.1:2000/clientapp/mail/">Expert's Advice</a></li>
+	  <li><a href="http://127.0.0.1:2000/clientapp/home/">Logout</a></li>
+      </nav>
+      <div class="clear"></div>
+    </div>
+  </header>
+<br>
+
+  <!-- Content -->
+  <section id="content">
+    <div class="container_24">
+      <div class="wrapper">
+        <div class="grid_24 content-bg">
+          <div class="wrapper">
+            <article class="grid_9 suffix_1 prefix_1 alpha">
+		<p>
+		</article>
+<!--<article class="grid_9 suffix_19 alpha">
+            <img src="{% static 'clientapp/images/sanf.jpeg' %}" alt=""/></article>-->
+<center>
+<div class="w3-container">
+  <img src="{{k.Profile_pic}}" class="w3-circle" alt="Norway" style="width:30%">
+</div>
+
+<br><br>
+<table cellpadding="5" cellspacing="5">
+  <tr>
+  </tr>
+  <tr>
+    <td>Farmer Id:</td><th>{{k.id}}</th> </tr>
+   <tr> <td>Name:</td><th>{{k.First_name}}{{" "}}{{k.Last_name}}</th> </tr>
+   <tr>	<td>Gender:</td><th>{{k.Gender}}</th> </tr>
+<tr>	<td>Phone no:</td><th>{{k.Phone}}</th> </tr>
+<tr>	<td>No_Of_Acres:</td><th>{{k.No_of_acres}}</th> </tr>
+<tr>	<td>House_no:</td><th>{{k.H_no}}</th> </tr>
+<tr>	<td>Village:</td><th>{{k.Village}}</th> </tr>
+<tr>	<td>District:</td><th>{{k.District}}</th> </tr>
+
+  </table>
+
+
+
+<br><br><br><br>
+<div class="container">
+   <a href="http://127.0.0.1:2000/clientapp/map/" target="_blank"><img onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" src="http://www.nationalarchives.gov.uk/education/tudorhackney/maps/map_vill.gif" class="img-indent-bot" alt="" height=200 width=250></a>
+                  <p>Farms and houses</p>
+  </div>
+                  &nbsp; &nbsp; &nbsp;
+                <div class="container">
+                  <a href="http://127.0.0.1:2000/clientapp/rend/" target="_blank"><img onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" src="https://upload.wikimedia.org/wikipedia/commons/b/ba/TuleLakeHabitats.png" class="img-indent-bot" alt="" height=200 width=250></a>
+                 <p>Analytics of the crops</p>
+  </div>
+&nbsp; &nbsp; &nbsp;
+<div class="container">
+                  <a href="http://127.0.0.1:2000/clientapp/rend1/" target="_blank"><img onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" src="https://static.turbosquid.com/Preview/2014/05/23__10_47_08/well.jpg9d566f11-6c67-4daa-adbe-9d5ad601f8e6Larger.jpg" class="img-indent-bot" alt="" height=200 width=250></a>
+                    <p>3D wells</p>
+  </div>
+
+</center>
+<script>
+function bigImg(x) {
+    x.style.height = "300px";
+    x.style.width = "300px";
+}
+
+function normalImg(x) {
+    x.style.height = "200px";
+    x.style.width = "250px";
+}
+</script>
+</body>
+</html>
+
+
+</script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer>
+    <div class="container_24">
+      <div class="wrapper">
+        <div class="grid_24 footer-bg">
+          <div class="hr-border-2"></div>
+          <div class="wrapper">
+            <div class="grid_7 suffix_1 prefix_1 alpha">
+              <div class="copyright"> &copy; 2017 <strong class="footer-logo">Jai Kissan</strong>
+               
+              </div>
+            </div>
+            
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

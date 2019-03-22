@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Fertilizers</title>
+<meta charset="utf-8">
+{% load static %}
+<link rel="stylesheet" href="{% static '/clientapp/css/style.css' %}">
+<link rel="stylesheet" href="{% static '/clientapp/css/grid.css' %}">
+<link rel="stylesheet" href="{% static '/clientapp/css/forms.css' %}">
+
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+<script src="{%static '/clientapp/js/jquery-1.7.1.min.js' %}"></script>
+<script src="{% static 'clientapp/js/superfish.js' %}"></script>
+<script src="{% static 'clientapp/js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static '/clientapp/js/tms-0.4.1.js' %}"></script>
+<script src="{% static '/clientapp/js/slider.js' %}"></script>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<link rel="stylesheet" href="css/ie.css"> 
+<![endif]-->
+</head>
+<body>
+<div class="main-bg">
+  <!-- Header -->
+  <header>
+    <div class="inner">
+      <h1 class="logo"><a href="index.html">AgroPlus - Agriculture company</a></h1>
+      <nav>
+        <ul class="sf-menu">
+	 <li><a href="/clientapp/crop">Crop Prices</a></li>
+          <li><a href="http://127.0.0.1:2000/clientapp/home/">Home</a></li>
+          
+      </nav>
+      <div class="clear"></div>
+    </div>
+  </header>
+<br>
+  <!-- Content -->
+  <section id="content">
+    <div class="container_24">
+      <div class="wrapper">
+        <div class="grid_24 content-bg">
+          <div class="wrapper">
+            <article class="grid_6 suffix_1 prefix_1 alpha">
+		<p>
+		</article>
+            <article class="grid_15 suffix_1 omega">
+              <h2>Fertilizer Prices</h2><br>
+		<table>
+  <tr>
+    <th>Fertilizer Name</th>
+    <th>Price(Rs)</th>
+    
+  </tr>
+  <tr>
+    <td>Ammonium Sulphate Ni</td>
+    <td>1200</td>
+   
+  </tr>
+  <tr>
+    <td>Ammonia</td>
+    <td>1050</td>
+    
+  </tr>
+  <tr>
+    <td>Urea</td>
+    <td>980</td>
+    
+  </tr>
+</table>
+
+
+              
+           </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer>
+    <div class="container_24">
+      <div class="wrapper">
+        <div class="grid_24 footer-bg">
+          <div class="hr-border-2"></div>
+          <div class="wrapper">
+            <div class="grid_7 suffix_1 prefix_1 alpha">
+              <div class="copyright"> &copy; 2017 <strong class="footer-logo">Jai Kissan</strong>
+               
+              </div>
+            </div>
+            
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
+
+  

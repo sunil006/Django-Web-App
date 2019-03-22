@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+{% load rest_framework %}
+<h1>Farmer Id : 1</h1>
+
+
+<script>
+var house=[];
+var Fa;
+var Na;
+var Str="";
+{% for item in data3 %}
+
+	var H1={{ item.HLat }};
+	var H2={{ item.HLong }};
+	var HId={{ item.F_id }};
+	var PN={{ item.F_id.Phone }};
+        house.push([H1,H2,HId,PN]);
+{% endfor %}
+</script>
+<div id="map" style="width:100%;height:600px;"></div>
+
+<script>
+var map;
+var infoWindow;
+function initMap()
+{
+var locations=[];
+var farmCoords=[];
+
+   
+    {% for item in data %}
+	var W1 = {{ item.Lat }};
+        var W2 = {{ item.Long }};
+        var D={{ item.Depth }};
+	var A={{ item.Avg_water }};
+	var F={{ item.FF_id.F_id }};
+	locations.push([W1,W2,D,A,F]);
+    {% endfor %}
+
+
+
+
+
+
+    {% for item in data2 %}
+    	window.Fa={{ item.F_id }};
+	window.Na={{ item.F_id.No_of_acres }};
+    	var La1 = {{ item.Lat_1 }};
+    	var Lo1 = {{ item.Long_1 }};
+    	var La2 = {{ item.Lat_2 }};
+    	var Lo2 = {{ item.Long_2 }};
+    	var La3 = {{ item.Lat_3 }};
+    	var Lo3 = {{ item.Long_3 }};
+    	var La4 = {{ item.Lat_4 }};
+    	var Lo4 = {{ item.Long_4 }};
+    	var La5 = {{ item.Lat_5 }};
+    	var Lo5 = {{ item.Long_5 }};
+    	var La6 = {{ item.Lat_6 }};
+    	var Lo6 = {{ item.Long_6 }};
+    	var La7 = {{ item.Lat_7 }};
+    	var Lo7 = {{ item.Long_7 }};
+    	var La8 = {{ item.Lat_8 }};
+    	var Lo8 = {{ item.Long_8 }};
+	farmCoords.push([
+            {lat: La1, lng: Lo1},
+            {lat: La2, lng: Lo2},
+            {lat: La3, lng: Lo3},
+	    {lat: La4, lng: Lo4},
+	    {lat: La5, lng: Lo5},
+            {lat: La6, lng: Lo6},
+            {lat: La7, lng: Lo7},
+	    {lat: La8, lng: Lo8}
+        ])
+    {% endfor %}
+    map = new google.maps.Map(document.getElementById('map'), 
+	{zoom: 18,
+          center: {lat: La2, lng: Lo2},
+          mapTypeId: 'satellite'});
+
+
+
+
+
+
+/*var houseslo = [
+      ['Aravind',18.418829, 84.014840, 4],
+      ['Santosh',18.419259, 84.014618, 5],
+      ['Sunil', 18.418098, 84.014447, 3],
+      ['Giri', 18.418098, 84.015369, 2],      
+    ];
+*/
+    var Wi="Keeri";
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < house.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(house[i][0],house[i][1]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          
+	//for (i=0;i<house.length;i++){
+	//	Str=house[i][0];
+	//}
+	//document.write(Str);
+	  infowindow.setContent("Farmer Id : "+house[i][2]+'<br>'+"Wife : "+Wi+'<br>'+"Phone : "+house[i][3]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][0],locations[i][1]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent("Farmer Id : "+locations[i][4]+'<br>'+"Depth : "+locations[i][2]+"<br>"+"Avg yield : "+locations[i][3]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+      /*var farmCoords = [
+            {lat: La1, lng: Lo1},
+            {lat: La2, lng: Lo2},
+            {lat: La3, lng: Lo3},
+	    {lat: La4, lng: Lo4},
+	    {lat: La5, lng: Lo5},
+            {lat: La6, lng: Lo6},
+            {lat: La7, lng: Lo7},
+	    {lat: La8, lng: Lo8}
+        ];*/
+    for (i = 0; i < farmCoords.length; i++) {
+      var farmBoundary = new google.maps.Polygon({
+          paths: farmCoords[i],
+          strokeColor: '#000000',
+          strokeOpacity: 0.8,
+          strokeWeight: 3,
+          fillColor: '#008700',
+          fillOpacity: 0.35,
+	  name: 'name 1'
+        });
+      farmBoundary.setMap(map);
+      farmBoundary.addListener('click', showArrays);
+      infoWindow = new google.maps.InfoWindow;
+
+	function showArrays(event) {
+        var contentString = "Farmer Id : "+Fa+'<br>'+"No. of acres : "+Na+'<br>'+"Crop : Rice";
+        infoWindow.setContent(contentString);
+        infoWindow.setPosition(event.latLng);
+
+        infoWindow.open(map);
+      }
+
+      }
+    }
+      
+
+
+
+</script>
+
+
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA6DBq5hcAeUdPjXiUIiUIKOfqbdUxaQ8 &callback=initMap">
+    </script>
+
+</body>
+</html>
+
+
+
+

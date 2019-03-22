@@ -1,0 +1,151 @@
+
+<link rel="stylesheet" href="style.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"> 
+	<link rel="stylesheet" type="text/css" href="assets/css/page-style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/hexagons.min.css"> 
+	<script src="assets/js/jquery-2.1.0.min.js"></script>
+	<script src="assets/js/hexagons.min.js"></script>
+<br><br>
+<div id="container">
+<div>
+		<center><a href="#"><span class="hb hb-sm spin"><i class="fa fa-facebook"></i></span></a>
+		<a href="#"><span class="hb hb-sm spin"><i class="fa fa-twitter"></i></span></a> 
+		<a href="#"><span class="hb hb-sm spin"><i class="fa fa-google-plus"></i></span></a>
+		<a href="#"><span class="hb hb-sm spin"><i class="fa fa-youtube"></i></span></a>
+		<a href="#"><span class="hb hb-sm spin"><i class="fa fa-linkedin-square"></i></span></a></center>
+	</div>
+<div id="header">
+
+	</div>
+    
+    <div id="primary">
+	<img src="image1.jpg" style="width:240px;height:490px;">
+
+    </div>
+    
+    <div id="content" style="overflow-x:scroll ; overflow-y: scroll; padding-bottom:10px;">
+        <div><br><br><br><br><br>
+
+<script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+<script>
+(function(){
+    const element = id => document.getElementById(id)
+
+    // Get elements
+    let username = element('username')
+    let create = element('create')
+    let userlist = element('userlist')
+    let createNum = element('createNum')
+    let phno = element('phno')
+
+    let srphno = element('srphno')
+    let sp = element('sp')
+
+    let ulist = new Set()
+
+    let current = element('current')
+
+    // Connect to socket.io
+    let socket = io.connect('http://localhost:4000')
+
+    // Check for connection
+    if (socket !== undefined) {
+        let currentUser = -1
+        console.log('connected to socket...')
+        
+        // Handle output
+        socket.on('userslist', data => {
+            // console.log(data)
+           if (data.length) {
+               data.forEach(data => {
+                    // console.log(data)
+                    ulist.add(`<li class="list-group-item" data-key="${data.id}" style="cursor: pointer;" onclick='currentUser = ${data.id}; current.innerHTML = currentUser; current.innerHTML += "${' ' + data.name}"'>${data.name}</li>`)
+                    userlist.innerHTML = [...ulist].reduce((a, b) => a+b )
+
+               });
+            }
+        })
+        
+        // handle input
+        create.addEventListener('click', event => {
+                // Emit to the server
+                console.log(username.value)
+                socket.emit('insert_user', {
+                    name: username.value
+                })
+                event.preventDefault()
+            })
+        }
+
+        // insert number
+        createNum.addEventListener('click', event => {
+            // console.log(currentUser)
+            if ( currentUser >= 1 ) {
+                socket.emit('insert_number', {
+                    user: currentUser,
+                    number: phno.value
+                })
+            }
+            event.preventDefault()
+        })
+
+        sp.addEventListener('click', event => {
+            // console.log(srphno.value)
+            socket.emit('find', {
+                target: srphno.value
+            })
+            event.preventDefault()
+        })
+        socket.on('result', data => {
+            // console.log(data)
+            element('res').innerHTML = data[0].name
+        })
+})()
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+    
+    
+    
+    <div id="footer">
+        <p>&copy; Raghu G<p>
+    </div>
+</div>
+

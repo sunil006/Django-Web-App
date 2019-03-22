@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Jai Kissan</title>
+<meta charset="utf-8">
+{% load static %}
+<link rel="stylesheet" href="{% static '/clientapp/css/style.css' %}">
+<link rel="stylesheet" href="{% static '/clientapp/css/grid.css' %}">
+<link rel="stylesheet" href="{% static '/clientapp/css/forms.css' %}">
+
+<script src="{%static '/clientapp/js/jquery-1.7.1.min.js' %}"></script>
+<script src="{% static 'clientapp/js/superfish.js' %}"></script>
+<script src="{% static 'clientapp/js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static '/clientapp/js/tms-0.4.1.js' %}"></script>
+<script src="{% static '/clientapp/js/slider.js' %}"></script>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<link rel="stylesheet" href="css/ie.css"> 
+<![endif]-->
+</head>
+<body>
+<div class="main-bg">
+  <!-- Header -->
+  <header>
+    <div class="inner">
+      <h1 class="logo"><a href="index.html">Jai Kissan</a></h1>
+      <nav>
+        <ul class="sf-menu">
+         <li><a href="/clientapp/crop">Crop Prices</a></li>
+          <li><a href="/clientapp/fertilizer">Fertlizer Prices</a></li>
+          <li><a href="/clientapp/get_name">login</a></li>
+        </ul>
+      </nav>
+      <div class="clear"></div>
+    </div>
+    <div class="slider-container">
+      <div class="mp-slider">
+        <ul class="items">
+          <li><img src="{% static 'clientapp/images/slide-1.jpg' %}" alt=""/>
+            
+          </li>
+          <li><img src="{% static 'clientapp/images/slide-2.jpg' %}" alt="">
+            
+          </li>
+          <li><img src="{% static 'clientapp/images/slide-3.jpg' %}" alt="">
+            
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a href="#" class="mp-prev"></a> <a href="#" class="mp-next"></a> </header>
+  <!-- Content -->
+  <section id="content">
+    <div class="container_24">
+      <div class="wrapper">
+        <div class="grid_24 content-bg">
+          <div class="wrapper">
+            <div class="grid_16 suffix_1 prefix_1 alpha">
+              <article class="indent-bot">
+               
+                <div class="wrapper hr-border-1">
+                  <div class="grid_4 alpha"><div id="cont_200cdbf0f6bec50301e5b7124d1d5d87"><script type="text/javascript" async src="https://www.theweather.com/wid_loader/200cdbf0f6bec50301e5b7124d1d5d87" ></script></div>
+                    <dl class="def-list-1">
+                      <dt> Weather Report </dt>
+                      <dd> The weather report of your location </dd>
+                    </dl>
+                  </div>
+                  
+                  <div class="grid_4"> <a href="https://www.sbi.co.in/portal/web/agriculture-banking" target="_blank"><img src="{% static '/clientapp/images/sbi.jpg' %}" class="img-indent-bot" alt="" height=140 width=200></a>
+                    <dl class="def-list-1">
+                      <dt> Banks </dt>
+                      <dd> Loans information which are given to Kissans </dd>
+                    </dl>
+                  </div>
+                  <div class="grid_4 omega"> <a href="http://www.apagrisnet.gov.in/" target="_blank"><img src="{% static 'clientapp/images/govt.jpg' %}" class="img-indent-bot" alt="" height=140></a>
+                    <dl class="def-list-1">
+                      <dt> Government Schemes </dt>
+                      <dd> Governent Schemes given to the Kissans </dd>
+                    </dl>
+                  </div>
+                </div>
+                
+              </article>
+              <!--<article class="banner-box">
+                <div class="inner">
+                  <h3>Need a useful advice from breeder?</h3>
+                  <h4>we want to raise your crops &amp; livestock!</h4>
+                  <blockquote class="quote indent-right"> <strong>This website has several pages: Home,Crop Prices,Seeds Prices</strong>  </blockquote>
+                  <div class="alignright indent-right"> <span class="author">John Smith <i>(breeder)</i></span> </div>
+                </div>
+                <img src="images/banner-box-img.png" alt="" class="banner-box-img"> </article> -->
+            </div>
+            <div class="grid_5 suffix_1 omega">
+              <article class="indent-bot-1">
+                <h2 class="heading-1">Welcome!</h2>
+                <p class="p1"> <strong> Jai Kissan is one of free website for farmers to keep track of there farm details on google maps. </strong> </p>
+                <p class="hr-border-1"> This website has farmer and his family details in which they can track there investements and profits.  </p>
+                
+              </article>
+              <!--<article>
+                <h2>Our programs:</h2>
+                <ul class="list-1">
+                  <li><a href="#">Agronomic Practices</a></li>
+                  <li><a href="#">Biotechnology</a></li>
+                  <li><a href="#">Biotechnology Research</a></li>
+                  <li><a href="#">Benefits of Biotechnology</a></li>
+                  <li><a href="#">The Regulatory Process</a></li>
+                  <li><a href="#">Breeding</a></li>
+                  <li><a href="#">Learning Centers</a></li>
+                </ul>
+              </article> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer>
+    <div class="container_24">
+      <div class="wrapper">
+        <div class="grid_24 footer-bg">
+          <div class="hr-border-2"></div>
+          <div class="wrapper">
+            <div class="grid_7 suffix_1 prefix_1 alpha">
+              <div class="copyright"> &copy; 2017 <strong class="footer-logo">JaiKissan</strong>
+                
+              </div>
+            </div>
+           
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
